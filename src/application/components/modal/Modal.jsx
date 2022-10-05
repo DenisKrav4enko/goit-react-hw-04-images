@@ -29,6 +29,7 @@ const Modal = props => {
 }
 
 Modal.propTypes = {
+  prevState: PropTypes.bool,
   currentImg: PropTypes.string,
   setIsOpenModal: PropTypes.func
 };

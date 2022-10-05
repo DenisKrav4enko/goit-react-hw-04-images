@@ -33,7 +33,13 @@ const ImageGallery = props => {
 }
 
 ImageGallery.propTypes = {
+  id: PropTypes.number,
+  item: PropTypes.object,
   result: PropTypes.array,
+  prevState: PropTypes.bool,
+  webformatURL: PropTypes.string,
+  largeImageURL: PropTypes.string,
+  handleOnClick: PropTypes.func,
   setCurrentImg: PropTypes.func,
   setIsOpenModal: PropTypes.func,
 };

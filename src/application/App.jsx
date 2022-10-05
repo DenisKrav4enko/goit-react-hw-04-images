@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import {
   Wrapper,
@@ -15,7 +16,7 @@ const App = () => {
   const [currentImg, setCurrentImg] = useState('');
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [isLoading, setIsloading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [totalCount, setTotalCount] = useState(0);
 
   const onSubmit = () => {
@@ -23,23 +24,23 @@ const App = () => {
     const apiUrl = `https://pixabay.com/api/?page=${currentPage}&key=${myKey}&image_type=photo&orientation=horizontal&per_page=12`;
     const apiUrlWithProps = `https://pixabay.com/api/?q=${find}&page=${currentPage}&key=${myKey}&image_type=photo&orientation=horizontal&per_page=12`;
     axios.get(`${find ? apiUrlWithProps : apiUrl }`).then((req) => {
-      setIsloading(true)
+      setIsLoading(true)
       try {
         setResult(req?.data?.hits);
         setTotalCount(req?.data?.total);
       } catch (error) {
         console.Error(error);
       } finally {
-        setIsloading(false);
+        setIsLoading(false);
       }
     })
   }
 
   useEffect(() => {
     onSubmit()
-    setIsloading(false)
+    setIsLoading(false)
     setTimeout(() => {
-      setIsloading(true)
+      setIsLoading(true)
     }, 80000)
   }, [])
 
@@ -74,5 +75,30 @@ const App = () => {
     </Wrapper>
   );
 };
+
+App.propTypes = {
+  req: PropTypes.array,
+  data: PropTypes.object,
+  find: PropTypes.string,
+  hits: PropTypes.array,
+  total: PropTypes.number,
+  myKey: PropTypes.string,
+  apiUrl: PropTypes.string,
+  result: PropTypes.array,
+  setFind: PropTypes.func,
+  onSubmit: PropTypes.func,
+  isLoading: PropTypes.bool,
+  setResult: PropTypes.func,
+  currentImg: PropTypes.string,
+  totalCount: PropTypes.number,
+  isOpenModal: PropTypes.bool,
+  currentPage: PropTypes.number,
+  setIsLoading: PropTypes.func,
+  setCurrentImg: PropTypes.func,
+  setTotalCount: PropTypes.func,
+  setIsOpenModal: PropTypes.func,
+  setCurrentPage: PropTypes.func,
+  apiUrlWithProps: PropTypes.string,
+}
 
 export default App;

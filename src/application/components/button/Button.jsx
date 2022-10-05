@@ -24,7 +24,9 @@ const Button = props => {
 
 Button.propTypes = {
   onSubmit: PropTypes.func,
-  setCurrentPage: PropTypes.func
+  prevState: PropTypes.number,
+  handleOnClick: PropTypes.func,
+  setCurrentPage: PropTypes.func,
 };
 
 export default Button;

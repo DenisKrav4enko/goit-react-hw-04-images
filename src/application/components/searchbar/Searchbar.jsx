@@ -40,7 +40,8 @@ const Searchbar = props => {
 Searchbar.propTypes = {
   find: PropTypes.string,
   setFind: PropTypes.func,
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
+  handleOnSubmit: PropTypes.func,
 };
 
 export default Searchbar;
